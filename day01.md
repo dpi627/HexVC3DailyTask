@@ -9,6 +9,8 @@ https://hackmd.io/ey_lQ-BaTwqEdnYXyMPv3w?view
 
 # 實作
 
+https://chatgpt.com/share/6914211e-a400-800c-9965-6495bae1c6c2
+
 ```
 使用 ASCII 繪製一隻狗 (15-20 行高)
 ```
@@ -16,7 +18,7 @@ https://hackmd.io/ey_lQ-BaTwqEdnYXyMPv3w?view
 
 - https://chatgpt.com/share/6914211e-a400-800c-9965-6495bae1c6c2
 
-```
+```js
                __
               /  \__
              (     @\___
