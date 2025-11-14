@@ -1,6 +1,6 @@
 https://hackmd.io/ARDLXDDFTeSGs75ivrGaWA?view
 
-# Day 02 - 幫校長規劃一個午餐小幫手！
+# Day 04 - 幫校長規劃一個午餐小幫手！
 
 ## 題目
 
