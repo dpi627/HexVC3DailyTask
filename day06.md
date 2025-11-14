@@ -1,5 +1,7 @@
 # Day 06 - 設計專屬於自己的專案小幫手吧！
 
+https://hackmd.io/IUdySLZfT62NWIGQllsO8Q?view
+
 ## 題目
 
 相信同學們，在每一天生活或工作中，很常會有「重複性質」的工作！
