@@ -46,3 +46,7 @@ https://chatgpt.com/g/g-p-6915b7a61d448191b4fc864d1b73ec4d-emojir/project
 ```
 
 ## 結果
+
+![](./assets/day06-1.png)
+
+![](./assets/day06-2.png)
