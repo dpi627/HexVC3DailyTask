@@ -53,6 +53,10 @@ GitHub Repo (with rich readme.md)
 
 https://github.com/dpi627/HexVC3DailyTask08
 
+不熟 lcalstorage，生成指南
+
+https://github.com/dpi627/HexVC3DailyTask08/blob/main/docs/localstorage.md
+
 
 ## Prompt
 
