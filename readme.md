@@ -24,4 +24,4 @@
 - Day 16 - 狀況回報
 - Day 17 - 狀況回報
 - [Day 18 - 使用 Google Sheet 作為資料庫](./day18.md)
-- [Day 19 - 狀況回報](./day19.md)
+- [Day 19 - 偷偷問 AI](./day19.md)
