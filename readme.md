@@ -20,4 +20,8 @@
 - [Day 12 - 狗狗年齡計算器(優化)](./day12.md)
 - [Day 13 - 讓狗狗年齡計算器變成「快捷網頁 App」](./day13.md)
 - [Day 14 - 期中考](./day14.md)
-- [Day 15 - 推進主線任務](./day15.md)
+- [Day 15 - 推進主線任務(Zeabur)](./day15.md)
+- Day 16 - 狀況回報
+- Day 17 - 狀況回報
+- [Day 18 - 使用 Google Sheet 作為資料庫](./day18.md)
+- [Day 19 - 狀況回報](./day19.md)
