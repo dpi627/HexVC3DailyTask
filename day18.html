@@ -1,0 +1,290 @@
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokemon Store</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-color: #00f3ff;
+      --bg-color: #0a0a0a;
+      --card-bg: #1a1a1a;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-color);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    p {
+      color: #888;
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    /* 卡片樣式 */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #333;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-color);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--neon-color);
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+
+    .card-info {
+      padding: 15px;
+    }
+
+    .card-title {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .card-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--neon-color);
+      font-weight: 700;
+    }
+
+    /* 載入中與錯誤訊息 */
+    .msg-box {
+      text-align: center;
+      padding: 40px;
+      border: 2px dashed #444;
+      border-radius: 10px;
+      grid-column: 1 / -1;
+      color: #666;
+    }
+
+    /* 篩選區 */
+    .filter-bar {
+      margin-bottom: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-label {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border: 1px solid #444;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--neon-color);
+      background: #222;
+    }
+
+    .filter-btn.active {
+      background: var(--neon-color);
+      color: #000;
+      border-color: var(--neon-color);
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>小杰 🩷 寶可夢</h1>
+    </header>
+
+    <div class="filter-bar">
+      <span class="filter-label">價格篩選：</span>
+      <button class="filter-btn active" data-filter="all">全部顯示</button>
+      <button class="filter-btn" data-filter="low">$10,000 以下</button>
+      <button class="filter-btn" data-filter="mid">$10,000 - $30,000</button>
+      <button class="filter-btn" data-filter="high">$30,000 以上</button>
+    </div>
+
+    <div id="app" class="grid">
+      <div class="msg-box">
+        <h2>⏳ 倉庫連線中...</h2>
+        <p>如果很久沒反應，請檢查你的 CSV 網址是否正確</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // 👇 任務區域：請將你的 Google Sheet CSV 網址貼在下面 👇
+    // ==========================================
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSu4AFwFGEKbsj1S1_yItK8w-iOqPSgMhI5Lj_QlD2NBjIz7j9pJdjgdT7a862VGa-vJCFIJvRvg_8E/pub?output=csv";
+    // === 核心程式碼 (負責把資料畫出來) ===
+    const app = document.getElementById('app');
+    let allData = []; // 儲存所有資料
+    let currentFilter = 'all'; // 目前的篩選條件
+    function init() {
+      if (CSV_URL.includes("你的_CSV_網址")) {
+        console.warn("還沒設定網址喔！");
+        return;
+      }
+      Papa.parse(CSV_URL, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          console.log("CSV 載入成功！資料筆數:", results.data.length);
+          console.log("第一筆資料:", results.data[0]);
+          allData = results.data;
+          renderCards(allData);
+          setupFilterButtons();
+        },
+        error: function(error) {
+          console.error("載入錯誤:", error);
+          app.innerHTML = '<div class="msg-box" style="color:#ff4444; border-color:#ff4444"><h2>❌ 連線失敗</h2><p>請確認網址格式是否為 CSV</p><p>錯誤訊息: ' + error.message + '</p></div>';
+        }
+      });
+    }
+    // 設定篩選按鈕的點擊事件
+    function setupFilterButtons() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按鈕的 active 樣式
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // 加上當前按鈕的 active 樣式
+          this.classList.add('active');
+          // 取得篩選條件
+          currentFilter = this.dataset.filter;
+          filterAndRender();
+        });
+      });
+    }
+    // 根據篩選條件過濾並顯示資料
+    function filterAndRender() {
+      let filteredData = allData;
+      if (currentFilter !== 'all') {
+        filteredData = allData.filter(item => {
+          const price = parseFloat(item.price || item['price ']) || 0;
+          switch (currentFilter) {
+            case 'low':
+              return price < 10000;
+            case 'mid':
+              return price >= 10000 && price <= 30000;
+            case 'high':
+              return price > 30000;
+            default:
+              return true;
+          }
+        });
+      }
+      renderCards(filteredData);
+    }
+
+    function renderCards(data) {
+      app.innerHTML = ''; // 清除載入訊息
+      // 如果沒有資料，顯示提示訊息
+      if (data.length === 0 || (data.length === 1 && !data[0].name)) {
+        app.innerHTML = '<div class="msg-box"><h2>😅 找不到符合條件的商品</h2><p>試試其他價格範圍吧！</p></div>';
+        return;
+      }
+      data.forEach((item, index) => {
+        // 除錯：看看實際的欄位名稱
+        if (index === 0) {
+          console.log("所有欄位名稱:", Object.keys(item));
+          console.log("完整資料:", item);
+        }
+        // 取得欄位資料（處理可能的空格問題）
+        const name = item.name || item['name'];
+        const price = item.price || item['price '] || item['price'];
+        const tags = item.tags || item['tags'];
+        console.log(`商品 ${index}: name=${name}, price=${price}, tags=${tags}`);
+        // 確保至少有商品名稱
+        if (!name) return;
+        // 處理圖片：如果沒填圖片，用預設圖示代替
+        const img = item.image_url || 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&q=80';
+        // 處理價格：確保轉換為數字
+        const priceNum = parseFloat(price) || 0;
+        const priceDisplay = priceNum.toLocaleString();
+        // 處理標籤：分割標籤（可能是逗號分隔）
+        const tagText = tags ? tags.split(',')[0].trim() : '';
+        const tagHtml = tagText ? `<span class="tag">${tagText}</span>` : '';
+        // 產生卡片 HTML
+        const html = `
+        <div class="card">
+          ${tagHtml}
+          <img src="${img}" class="card-img">
+          <div class="card-info">
+            <h3 class="card-title">${name}</h3>
+            <span class="card-price">$${priceDisplay}</span>
+          </div>
+        </div>
+      `;
+        app.innerHTML += html;
+      });
+    }
+    init();
+  </script>
+
+</body>
+
+</html>
