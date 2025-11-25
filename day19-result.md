@@ -4,7 +4,7 @@
 ![Prompt A](assets/day19-prompt-a.png)
 
 ## Prompt B
-![Prompt B](assets/day19-primpt-b.png)
+![Prompt B](assets/day19-prompt-b.png)
 
 ## 額外挑戰 1
 ![結果 1](assets/day19-1.png)
