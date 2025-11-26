@@ -288,9 +288,104 @@
 <body>
 
   <div class="container">
-    <!-- Logo 區塊 -->
+    <!-- Logo 區塊 - 內嵌 SVG -->
     <div class="logo-container">
-      <img src="assets/day20-logo.svg" alt="Pokemon Store Logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <defs>
+          <filter id="logoNeonGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="logoStrongGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="logoPulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g transform="translate(100, 100)">
+          <circle cx="0" cy="0" r="75" fill="none" stroke="#00f3ff" stroke-width="2" opacity="0.2" filter="url(#logoPulseGlow)">
+            <animate attributeName="r" values="75;85;75" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-width" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="0" cy="0" r="70" fill="none" stroke="#00f3ff" stroke-width="1" opacity="0.3" filter="url(#logoStrongGlow)">
+            <animate attributeName="r" values="70;78;70" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <g>
+            <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite"/>
+            <circle cx="0" cy="0" r="60" fill="#1a1a1a" stroke="#333" stroke-width="3"/>
+            <path d="M -60 0 A 60 60 0 0 1 60 0 L 45 0 A 45 45 0 0 0 -45 0 Z" fill="#ff3333" stroke="none">
+              <animate attributeName="fill" values="#ff3333;#ff5555;#ff3333" dur="3s" repeatCount="indefinite"/>
+            </path>
+            <path d="M -60 0 A 60 60 0 0 0 60 0 L 45 0 A 45 45 0 0 1 -45 0 Z" fill="#f5f5f5" stroke="none"/>
+            <rect x="-60" y="-5" width="120" height="10" fill="#333"/>
+          </g>
+          <g>
+            <ellipse cx="-28" cy="-32" rx="14" ry="7" fill="white" opacity="0.35" transform="rotate(-25)">
+              <animate attributeName="cx" values="-28;-24;-28;-32;-28" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="-32;-35;-32;-30;-32" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.35;0.5;0.35;0.4;0.35" dur="4s" repeatCount="indefinite"/>
+            </ellipse>
+            <circle cx="-18" cy="-42" r="4" fill="white" opacity="0.25">
+              <animate attributeName="cx" values="-18;-15;-18;-21;-18" dur="3.5s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="-42;-44;-42;-40;-42" dur="3.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.25;0.4;0.25;0.3;0.25" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g>
+            <circle cx="0" cy="0" r="18" fill="#444" stroke="#00f3ff" stroke-width="3" filter="url(#logoNeonGlow)">
+              <animate attributeName="stroke-width" values="3;4;3" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="12" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2">
+              <animate attributeName="stroke-opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="6" fill="#00f3ff" filter="url(#logoStrongGlow)">
+              <animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite"/>
+              <animate attributeName="fill" values="#00f3ff;#ffffff;#00f3ff" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="2" fill="#ffffff">
+              <animate attributeName="opacity" values="1;0.6;1" dur="0.8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g filter="url(#logoNeonGlow)">
+            <circle cx="0" cy="-68" r="3" fill="#00f3ff">
+              <animateTransform attributeName="transform" type="rotate" values="0;360" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g filter="url(#logoNeonGlow)">
+            <circle cx="0" cy="-68" r="2" fill="#00f3ff">
+              <animateTransform attributeName="transform" type="rotate" values="120;480" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g filter="url(#logoNeonGlow)">
+            <circle cx="0" cy="-68" r="2" fill="#00f3ff">
+              <animateTransform attributeName="transform" type="rotate" values="240;600" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.4s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+        </g>
+      </svg>
     </div>
 
     <header>
