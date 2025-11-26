@@ -25,3 +25,4 @@
 - Day 17 - 狀況回報
 - [Day 18 - 使用 Google Sheet 作為資料庫](./day18.md)
 - [Day 19 - 偷偷問 AI](./day19.md)
+- [Day 20 - 畫出專案架構圖](./day20.md)
