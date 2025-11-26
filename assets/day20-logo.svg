@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- 霓虹光暈效果 -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 漸層定義 -->
+    <linearGradient id="pokeBallGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4444"/>
+      <stop offset="45%" style="stop-color:#ff2222"/>
+      <stop offset="50%" style="stop-color:#333333"/>
+      <stop offset="55%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#eeeeee"/>
+    </linearGradient>
+    
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f3ff"/>
+      <stop offset="100%" style="stop-color:#00a8b5"/>
+    </linearGradient>
+    
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    
+    <!-- 資料流動畫漸層 -->
+    <linearGradient id="dataFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:0">
+        <animate attributeName="offset" values="0;1" dur="2s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" style="stop-color:#00f3ff;stop-opacity:1">
+        <animate attributeName="offset" values="0.5;1.5" dur="2s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#00f3ff;stop-opacity:0">
+        <animate attributeName="offset" values="1;2" dur="2s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- 裝飾性六角形網格 -->
+  <g opacity="0.1" stroke="#00f3ff" fill="none" stroke-width="0.5">
+    <polygon points="50,30 70,40 70,60 50,70 30,60 30,40"/>
+    <polygon points="350,330 370,340 370,360 350,370 330,360 330,340"/>
+    <polygon points="80,320 100,330 100,350 80,360 60,350 60,330"/>
+    <polygon points="320,50 340,60 340,80 320,90 300,80 300,60"/>
+  </g>
+  
+  <!-- 主要寶貝球 - 現代化設計 -->
+  <g transform="translate(200, 180)">
+    <!-- 外圈光暈 -->
+    <circle cx="0" cy="0" r="95" fill="none" stroke="#00f3ff" stroke-width="2" opacity="0.3" filter="url(#strongGlow)">
+      <animate attributeName="r" values="95;100;95" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 寶貝球主體 -->
+    <circle cx="0" cy="0" r="80" fill="#1a1a1a" stroke="#333" stroke-width="3"/>
+    
+    <!-- 上半部 - 紅色 -->
+    <path d="M -80 0 A 80 80 0 0 1 80 0 L 60 0 A 60 60 0 0 0 -60 0 Z" fill="#ff3333" stroke="none"/>
+    
+    <!-- 下半部 - 白色 -->
+    <path d="M -80 0 A 80 80 0 0 0 80 0 L 60 0 A 60 60 0 0 1 -60 0 Z" fill="#f5f5f5" stroke="none"/>
+    
+    <!-- 中間線條 -->
+    <rect x="-80" y="-6" width="160" height="12" fill="#333"/>
+    
+    <!-- 中心按鈕外圈 -->
+    <circle cx="0" cy="0" r="25" fill="#444" stroke="#00f3ff" stroke-width="3" filter="url(#neonGlow)"/>
+    
+    <!-- 中心按鈕內圈 -->
+    <circle cx="0" cy="0" r="15" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 中心發光點 -->
+    <circle cx="0" cy="0" r="8" fill="#00f3ff" filter="url(#strongGlow)">
+      <animate attributeName="r" values="8;10;8" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 反光效果 -->
+    <ellipse cx="-35" cy="-45" rx="20" ry="12" fill="white" opacity="0.3" transform="rotate(-30)"/>
+  </g>
+  
+  <!-- 資料流線條 - 代表 Google Sheets 連接 -->
+  <g filter="url(#neonGlow)">
+    <!-- 左側資料流入 -->
+    <path d="M 30 180 Q 80 180 120 180" fill="none" stroke="#00f3ff" stroke-width="2" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;-24" dur="1s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- 右側資料流出 -->
+    <path d="M 280 180 Q 320 180 370 180" fill="none" stroke="#00f3ff" stroke-width="2" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;24" dur="1s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- 上方連接線 -->
+    <path d="M 200 60 L 200 95" fill="none" stroke="#00f3ff" stroke-width="2" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="0.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 小圖標 - 代表商品卡片 -->
+  <g transform="translate(60, 280)" filter="url(#neonGlow)">
+    <rect x="0" y="0" width="40" height="50" rx="5" fill="#1a1a1a" stroke="#00f3ff" stroke-width="1.5"/>
+    <rect x="5" y="5" width="30" height="20" rx="2" fill="#333"/>
+    <rect x="5" y="30" width="20" height="4" rx="1" fill="#00f3ff"/>
+    <rect x="5" y="38" width="15" height="3" rx="1" fill="#666"/>
+  </g>
+  
+  <g transform="translate(180, 290)" filter="url(#neonGlow)">
+    <rect x="0" y="0" width="40" height="50" rx="5" fill="#1a1a1a" stroke="#00f3ff" stroke-width="1.5"/>
+    <rect x="5" y="5" width="30" height="20" rx="2" fill="#333"/>
+    <rect x="5" y="30" width="20" height="4" rx="1" fill="#00f3ff"/>
+    <rect x="5" y="38" width="15" height="3" rx="1" fill="#666"/>
+  </g>
+  
+  <g transform="translate(300, 280)" filter="url(#neonGlow)">
+    <rect x="0" y="0" width="40" height="50" rx="5" fill="#1a1a1a" stroke="#00f3ff" stroke-width="1.5"/>
+    <rect x="5" y="5" width="30" height="20" rx="2" fill="#333"/>
+    <rect x="5" y="30" width="20" height="4" rx="1" fill="#00f3ff"/>
+    <rect x="5" y="38" width="15" height="3" rx="1" fill="#666"/>
+  </g>
+  
+  <!-- Google Sheets 圖標 -->
+  <g transform="translate(15, 150)">
+    <rect x="0" y="0" width="30" height="40" rx="3" fill="#0f9d58" stroke="#0d8a4c" stroke-width="1"/>
+    <rect x="5" y="8" width="8" height="5" fill="white" opacity="0.9"/>
+    <rect x="15" y="8" width="8" height="5" fill="white" opacity="0.9"/>
+    <rect x="5" y="16" width="8" height="5" fill="white" opacity="0.9"/>
+    <rect x="15" y="16" width="8" height="5" fill="white" opacity="0.9"/>
+    <rect x="5" y="24" width="8" height="5" fill="white" opacity="0.9"/>
+    <rect x="15" y="24" width="8" height="5" fill="white" opacity="0.9"/>
+  </g>
+  
+  <!-- 標題文字 -->
+  <text x="200" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#00f3ff" filter="url(#neonGlow)">
+    POKEMON STORE
+  </text>
+  
+  <!-- 雲端圖標 -->
+  <g transform="translate(175, 35)">
+    <path d="M 50 30 C 50 20 42 12 30 12 C 20 12 12 18 10 28 C 4 28 0 34 0 40 C 0 48 6 52 14 52 L 42 52 C 48 52 54 46 54 40 C 54 34 50 30 50 30 Z" 
+          fill="none" stroke="#00f3ff" stroke-width="2" filter="url(#neonGlow)"/>
+    <circle cx="27" cy="35" r="3" fill="#00f3ff">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

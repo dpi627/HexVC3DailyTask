@@ -1,0 +1,553 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <!-- 濾鏡效果 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    
+    <!-- 漸層 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="50%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#0a0a0f"/>
+    </linearGradient>
+    
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f3ff"/>
+      <stop offset="100%" style="stop-color:#0099aa"/>
+    </linearGradient>
+    
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#34a853"/>
+      <stop offset="100%" style="stop-color:#1e7e34"/>
+    </linearGradient>
+    
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9945ff"/>
+      <stop offset="100%" style="stop-color:#6a2eb8"/>
+    </linearGradient>
+    
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#cc4a1a"/>
+    </linearGradient>
+    
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff69b4"/>
+      <stop offset="100%" style="stop-color:#cc4488"/>
+    </linearGradient>
+    
+    <!-- 箭頭標記 -->
+    <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#00f3ff"/>
+    </marker>
+    
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#34a853"/>
+    </marker>
+    
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#9945ff"/>
+    </marker>
+    
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff6b35"/>
+    </marker>
+    
+    <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff69b4"/>
+    </marker>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1200" height="900" fill="url(#bgGradient)"/>
+  
+  <!-- 裝飾性網格線 -->
+  <g stroke="#1a1a2e" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="800" x2="1200" y2="800"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+  </g>
+  
+  <!-- 標題 -->
+  <text x="600" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#00f3ff" filter="url(#strongGlow)">
+    🏗️ Pokemon Store - System Architecture
+  </text>
+  <text x="600" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">
+    Data Flow • DOM Flow • Event Binding • External APIs
+  </text>
+  
+  <!-- ==================== 外部 API 層 ==================== -->
+  <text x="80" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00f3ff">
+    📡 EXTERNAL APIs
+  </text>
+  
+  <!-- Google Sheets API -->
+  <g transform="translate(80, 150)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#1a1a1a" stroke="#34a853" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="30" rx="10" fill="url(#greenGradient)"/>
+    <rect x="0" y="20" width="200" height="10" fill="url(#greenGradient)"/>
+    <text x="100" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      📊 Google Sheets
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="10" fill="#888">
+      Type: CSV Export
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="10" fill="#888">
+      Format: Header Row
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="10" fill="#34a853">
+      ✓ CORS Enabled
+    </text>
+  </g>
+  
+  <!-- PapaParse CDN -->
+  <g transform="translate(320, 150)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#1a1a1a" stroke="#9945ff" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="30" rx="10" fill="url(#purpleGradient)"/>
+    <rect x="0" y="20" width="200" height="10" fill="url(#purpleGradient)"/>
+    <text x="100" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      📦 PapaParse CDN
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="10" fill="#888">
+      Version: 5.4.1
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="10" fill="#888">
+      Source: cdnjs
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="10" fill="#9945ff">
+      ✓ CSV Parser Library
+    </text>
+  </g>
+  
+  <!-- Google Fonts -->
+  <g transform="translate(560, 150)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="200" height="100" rx="10" fill="#1a1a1a" stroke="#ff6b35" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="30" rx="10" fill="url(#orangeGradient)"/>
+    <rect x="0" y="20" width="200" height="10" fill="url(#orangeGradient)"/>
+    <text x="100" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      🔤 Google Fonts
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="10" fill="#888">
+      • Orbitron (title)
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="10" fill="#888">
+      • Roboto (body)
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="10" fill="#ff6b35">
+      ✓ Web Font Loader
+    </text>
+  </g>
+  
+  <!-- ==================== 資料處理層 ==================== -->
+  <text x="80" y="295" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00f3ff">
+    ⚙️ DATA PROCESSING LAYER
+  </text>
+  
+  <!-- init() 函數 -->
+  <g transform="translate(80, 315)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="180" height="120" rx="10" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="30" rx="10" fill="url(#cyanGradient)"/>
+    <rect x="0" y="20" width="180" height="10" fill="url(#cyanGradient)"/>
+    <text x="90" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000">
+      🚀 init()
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="9" fill="#00f3ff">
+      1. Check CSV_URL
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="9" fill="#888">
+      2. Papa.parse()
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="9" fill="#888">
+      3. Store → allData[]
+    </text>
+    <text x="15" y="100" font-family="monospace" font-size="9" fill="#888">
+      4. Call renderCards()
+    </text>
+    <text x="15" y="115" font-family="monospace" font-size="9" fill="#888">
+      5. setupFilterButtons()
+    </text>
+  </g>
+  
+  <!-- allData 狀態儲存 -->
+  <g transform="translate(300, 315)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="160" height="120" rx="10" fill="#1a1a1a" stroke="#ff69b4" stroke-width="2"/>
+    <rect x="0" y="0" width="160" height="30" rx="10" fill="url(#pinkGradient)"/>
+    <rect x="0" y="20" width="160" height="10" fill="url(#pinkGradient)"/>
+    <text x="80" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      💾 State Store
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="9" fill="#ff69b4">
+      let allData = []
+    </text>
+    <text x="15" y="75" font-family="monospace" font-size="9" fill="#888">
+      ├─ name: string
+    </text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#888">
+      ├─ price: number
+    </text>
+    <text x="15" y="105" font-family="monospace" font-size="9" fill="#888">
+      ├─ image_url: string
+    </text>
+    <text x="15" y="120" font-family="monospace" font-size="9" fill="#888">
+      └─ tags: string
+    </text>
+  </g>
+  
+  <!-- currentFilter 狀態 -->
+  <g transform="translate(500, 315)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="160" height="120" rx="10" fill="#1a1a1a" stroke="#ff69b4" stroke-width="2"/>
+    <rect x="0" y="0" width="160" height="30" rx="10" fill="url(#pinkGradient)"/>
+    <rect x="0" y="20" width="160" height="10" fill="url(#pinkGradient)"/>
+    <text x="80" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">
+      🎚️ Filter State
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="9" fill="#ff69b4">
+      currentFilter = 'all'
+    </text>
+    <text x="15" y="75" font-family="monospace" font-size="9" fill="#888">
+      Values:
+    </text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#888">
+      • 'all' (default)
+    </text>
+    <text x="15" y="105" font-family="monospace" font-size="9" fill="#888">
+      • 'low' (&lt;10000)
+    </text>
+    <text x="15" y="120" font-family="monospace" font-size="9" fill="#888">
+      • 'mid' / 'high'
+    </text>
+  </g>
+  
+  <!-- filterAndRender 函數 -->
+  <g transform="translate(700, 315)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="180" height="120" rx="10" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="30" rx="10" fill="url(#cyanGradient)"/>
+    <rect x="0" y="20" width="180" height="10" fill="url(#cyanGradient)"/>
+    <text x="90" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000">
+      🔍 filterAndRender()
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="9" fill="#888">
+      1. Read currentFilter
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="9" fill="#888">
+      2. Filter allData
+    </text>
+    <text x="15" y="85" font-family="monospace" font-size="9" fill="#00f3ff">
+      Switch:
+    </text>
+    <text x="25" y="100" font-family="monospace" font-size="9" fill="#888">
+      low: price &lt; 10000
+    </text>
+    <text x="25" y="115" font-family="monospace" font-size="9" fill="#888">
+      mid: 10000-30000
+    </text>
+  </g>
+  
+  <!-- renderCards 函數 -->
+  <g transform="translate(920, 315)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="180" height="120" rx="10" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="30" rx="10" fill="url(#cyanGradient)"/>
+    <rect x="0" y="20" width="180" height="10" fill="url(#cyanGradient)"/>
+    <text x="90" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000">
+      🎨 renderCards()
+    </text>
+    <text x="15" y="55" font-family="monospace" font-size="9" fill="#888">
+      1. Clear innerHTML
+    </text>
+    <text x="15" y="70" font-family="monospace" font-size="9" fill="#888">
+      2. forEach(item):
+    </text>
+    <text x="25" y="85" font-family="monospace" font-size="9" fill="#888">
+      - Extract fields
+    </text>
+    <text x="25" y="100" font-family="monospace" font-size="9" fill="#888">
+      - Format price
+    </text>
+    <text x="25" y="115" font-family="monospace" font-size="9" fill="#888">
+      - Generate HTML
+    </text>
+  </g>
+  
+  <!-- ==================== DOM 結構層 ==================== -->
+  <text x="80" y="480" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00f3ff">
+    🏠 DOM STRUCTURE
+  </text>
+  
+  <!-- Container -->
+  <g transform="translate(80, 500)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="1020" height="240" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="15" y="25" font-family="monospace" font-size="12" fill="#666">
+      &lt;div class="container"&gt;
+    </text>
+    
+    <!-- Header -->
+    <g transform="translate(20, 40)">
+      <rect x="0" y="0" width="200" height="60" rx="8" fill="#222" stroke="#00f3ff" stroke-width="1.5"/>
+      <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#00f3ff">
+        📌 &lt;header&gt;
+      </text>
+      <text x="100" y="38" text-anchor="middle" font-family="monospace" font-size="9" fill="#888">
+        &lt;h1&gt;小杰 🩷 寶可夢&lt;/h1&gt;
+      </text>
+      <text x="100" y="52" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">
+        font: Orbitron
+      </text>
+    </g>
+    
+    <!-- Filter Bar -->
+    <g transform="translate(240, 40)">
+      <rect x="0" y="0" width="350" height="60" rx="8" fill="#222" stroke="#9945ff" stroke-width="1.5"/>
+      <text x="175" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#9945ff">
+        🎛️ &lt;div class="filter-bar"&gt;
+      </text>
+      <g transform="translate(15, 30)">
+        <rect x="0" y="0" width="60" height="22" rx="11" fill="#00f3ff"/>
+        <text x="30" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#000">全部</text>
+      </g>
+      <g transform="translate(80, 30)">
+        <rect x="0" y="0" width="70" height="22" rx="11" fill="#333" stroke="#444"/>
+        <text x="35" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#fff">$10K以下</text>
+      </g>
+      <g transform="translate(160, 30)">
+        <rect x="0" y="0" width="80" height="22" rx="11" fill="#333" stroke="#444"/>
+        <text x="40" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#fff">$10K-$30K</text>
+      </g>
+      <g transform="translate(250, 30)">
+        <rect x="0" y="0" width="70" height="22" rx="11" fill="#333" stroke="#444"/>
+        <text x="35" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#fff">$30K以上</text>
+      </g>
+    </g>
+    
+    <!-- App Grid -->
+    <g transform="translate(20, 115)">
+      <rect x="0" y="0" width="980" height="110" rx="8" fill="#222" stroke="#00f3ff" stroke-width="1.5"/>
+      <text x="490" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#00f3ff">
+        📱 &lt;div id="app" class="grid"&gt; — CSS Grid: auto-fill, minmax(250px, 1fr)
+      </text>
+      
+      <!-- Card 1 -->
+      <g transform="translate(20, 30)">
+        <rect x="0" y="0" width="140" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        <rect x="0" y="0" width="140" height="30" rx="6" fill="#333"/>
+        <rect x="0" y="24" width="140" height="6" fill="#333"/>
+        <rect x="95" y="5" width="40" height="15" rx="8" fill="#00f3ff"/>
+        <text x="115" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#000">TAG</text>
+        <text x="70" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">商品名稱</text>
+        <text x="70" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#00f3ff">$12,000</text>
+      </g>
+      
+      <!-- Card 2 -->
+      <g transform="translate(180, 30)">
+        <rect x="0" y="0" width="140" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        <rect x="0" y="0" width="140" height="30" rx="6" fill="#333"/>
+        <rect x="0" y="24" width="140" height="6" fill="#333"/>
+        <text x="70" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">商品名稱</text>
+        <text x="70" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#00f3ff">$8,500</text>
+      </g>
+      
+      <!-- Card 3 -->
+      <g transform="translate(340, 30)">
+        <rect x="0" y="0" width="140" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+        <rect x="0" y="0" width="140" height="30" rx="6" fill="#333"/>
+        <rect x="0" y="24" width="140" height="6" fill="#333"/>
+        <rect x="95" y="5" width="40" height="15" rx="8" fill="#00f3ff"/>
+        <text x="115" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#000">熱賣</text>
+        <text x="70" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">商品名稱</text>
+        <text x="70" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#00f3ff">$35,000</text>
+      </g>
+      
+      <!-- More cards indicator -->
+      <g transform="translate(500, 30)">
+        <rect x="0" y="0" width="140" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="70" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#444">...</text>
+      </g>
+      
+      <!-- Card structure legend -->
+      <g transform="translate(680, 30)">
+        <rect x="0" y="0" width="280" height="70" rx="6" fill="#111" stroke="#444" stroke-width="1"/>
+        <text x="140" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#888">
+          Card Structure:
+        </text>
+        <text x="20" y="32" font-family="monospace" font-size="8" fill="#666">
+          .card → .tag (optional) + .card-img
+        </text>
+        <text x="20" y="46" font-family="monospace" font-size="8" fill="#666">
+                 + .card-info → .card-title
+        </text>
+        <text x="20" y="60" font-family="monospace" font-size="8" fill="#666">
+                              + .card-price
+        </text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- ==================== 事件綁定層 ==================== -->
+  <text x="80" y="780" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00f3ff">
+    🔗 EVENT BINDING
+  </text>
+  
+  <!-- setupFilterButtons -->
+  <g transform="translate(80, 800)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="280" height="70" rx="10" fill="#1a1a1a" stroke="#9945ff" stroke-width="2"/>
+    <text x="140" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#9945ff">
+      ⚡ setupFilterButtons()
+    </text>
+    <text x="20" y="42" font-family="monospace" font-size="9" fill="#888">
+      querySelectorAll('.filter-btn')
+    </text>
+    <text x="20" y="58" font-family="monospace" font-size="9" fill="#888">
+      .forEach → addEventListener('click')
+    </text>
+  </g>
+  
+  <!-- Click Handler -->
+  <g transform="translate(400, 800)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="250" height="70" rx="10" fill="#1a1a1a" stroke="#ff6b35" stroke-width="2"/>
+    <text x="125" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ff6b35">
+      🖱️ Click Handler
+    </text>
+    <text x="20" y="42" font-family="monospace" font-size="9" fill="#888">
+      1. Remove all .active class
+    </text>
+    <text x="20" y="58" font-family="monospace" font-size="9" fill="#888">
+      2. Add .active to clicked btn
+    </text>
+  </g>
+  
+  <!-- State Update -->
+  <g transform="translate(690, 800)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="200" height="70" rx="10" fill="#1a1a1a" stroke="#ff69b4" stroke-width="2"/>
+    <text x="100" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ff69b4">
+      💫 State Update
+    </text>
+    <text x="20" y="42" font-family="monospace" font-size="9" fill="#888">
+      currentFilter = 
+    </text>
+    <text x="20" y="58" font-family="monospace" font-size="9" fill="#ff69b4">
+        this.dataset.filter
+    </text>
+  </g>
+  
+  <!-- Re-render -->
+  <g transform="translate(930, 800)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="170" height="70" rx="10" fill="#1a1a1a" stroke="#00f3ff" stroke-width="2"/>
+    <text x="85" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#00f3ff">
+      🔄 Re-render
+    </text>
+    <text x="20" y="42" font-family="monospace" font-size="9" fill="#888">
+      filterAndRender()
+    </text>
+    <text x="20" y="58" font-family="monospace" font-size="9" fill="#888">
+        → renderCards()
+    </text>
+  </g>
+  
+  <!-- ==================== 資料流箭頭 ==================== -->
+  
+  <!-- Google Sheets → init (資料流) -->
+  <path d="M 180 250 L 180 310" stroke="#34a853" stroke-width="2" fill="none" marker-end="url(#arrowGreen)" filter="url(#glow)">
+    <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <text x="185" y="285" font-family="Arial, sans-serif" font-size="9" fill="#34a853">CSV Data</text>
+  
+  <!-- PapaParse → init (解析) -->
+  <path d="M 420 250 L 240 310" stroke="#9945ff" stroke-width="2" fill="none" marker-end="url(#arrowPurple)" filter="url(#glow)"/>
+  <text x="310" y="270" font-family="Arial, sans-serif" font-size="9" fill="#9945ff">Parse</text>
+  
+  <!-- init → allData -->
+  <path d="M 260 375 L 295 375" stroke="#00f3ff" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" filter="url(#glow)"/>
+  
+  <!-- init → setupFilterButtons (連接到事件層) -->
+  <path d="M 170 435 L 170 470 L 60 470 L 60 820 L 75 820" stroke="#9945ff" stroke-width="1.5" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+  
+  <!-- allData → filterAndRender -->
+  <path d="M 460 375 L 500 375" stroke="#ff69b4" stroke-width="2" fill="none" marker-end="url(#arrowPink)" filter="url(#glow)"/>
+  
+  <!-- currentFilter → filterAndRender -->
+  <path d="M 660 375 L 695 375" stroke="#ff69b4" stroke-width="2" fill="none" marker-end="url(#arrowPink)" filter="url(#glow)"/>
+  
+  <!-- filterAndRender → renderCards -->
+  <path d="M 880 375 L 915 375" stroke="#00f3ff" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" filter="url(#glow)"/>
+  
+  <!-- renderCards → DOM -->
+  <path d="M 1010 435 L 1010 460 L 1050 460 L 1050 550 L 1100 550" stroke="#00f3ff" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <path d="M 1050 550 L 1000 610" stroke="#00f3ff" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" filter="url(#glow)"/>
+  <text x="1055" y="580" font-family="Arial, sans-serif" font-size="9" fill="#00f3ff">innerHTML</text>
+  
+  <!-- Event flow arrows -->
+  <path d="M 360 835 L 395 835" stroke="#ff6b35" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" filter="url(#glow)"/>
+  <path d="M 650 835 L 685 835" stroke="#ff69b4" stroke-width="2" fill="none" marker-end="url(#arrowPink)" filter="url(#glow)"/>
+  <path d="M 890 835 L 925 835" stroke="#00f3ff" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" filter="url(#glow)"/>
+  
+  <!-- ==================== 圖例 ==================== -->
+  <g transform="translate(820, 130)">
+    <rect x="0" y="0" width="280" height="120" rx="10" fill="#111" stroke="#333" stroke-width="1"/>
+    <text x="140" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">
+      📋 LEGEND
+    </text>
+    <line x1="10" y1="38" x2="50" y2="38" stroke="#34a853" stroke-width="3"/>
+    <text x="60" y="42" font-family="Arial, sans-serif" font-size="10" fill="#888">External API</text>
+    <line x1="150" y1="38" x2="190" y2="38" stroke="#00f3ff" stroke-width="3"/>
+    <text x="200" y="42" font-family="Arial, sans-serif" font-size="10" fill="#888">Function</text>
+    <line x1="10" y1="58" x2="50" y2="58" stroke="#ff69b4" stroke-width="3"/>
+    <text x="60" y="62" font-family="Arial, sans-serif" font-size="10" fill="#888">State</text>
+    <line x1="150" y1="58" x2="190" y2="58" stroke="#9945ff" stroke-width="3"/>
+    <text x="200" y="62" font-family="Arial, sans-serif" font-size="10" fill="#888">Library</text>
+    <line x1="10" y1="78" x2="50" y2="78" stroke="#ff6b35" stroke-width="3"/>
+    <text x="60" y="82" font-family="Arial, sans-serif" font-size="10" fill="#888">Event Handler</text>
+    <line x1="150" y1="78" x2="190" y2="78" stroke="#666" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="200" y="82" font-family="Arial, sans-serif" font-size="10" fill="#888">DOM Update</text>
+    <circle cx="30" cy="100" r="6" fill="#00f3ff" filter="url(#glow)"/>
+    <text x="60" y="104" font-family="Arial, sans-serif" font-size="10" fill="#888">Data Flow (animated)</text>
+  </g>
+  
+  <!-- 技術棧總結 -->
+  <g transform="translate(820, 260)">
+    <rect x="0" y="0" width="280" height="175" rx="10" fill="#111" stroke="#00f3ff" stroke-width="1"/>
+    <text x="140" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#00f3ff">
+      🛠️ TECH STACK
+    </text>
+    <text x="20" y="45" font-family="monospace" font-size="10" fill="#888">HTML5</text>
+    <text x="100" y="45" font-family="monospace" font-size="10" fill="#888">Single Page App</text>
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#888">CSS3</text>
+    <text x="100" y="65" font-family="monospace" font-size="10" fill="#888">Grid + Flexbox</text>
+    <text x="20" y="85" font-family="monospace" font-size="10" fill="#888">JS (ES6)</text>
+    <text x="100" y="85" font-family="monospace" font-size="10" fill="#888">Vanilla, No Framework</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#888">API</text>
+    <text x="100" y="105" font-family="monospace" font-size="10" fill="#888">Google Sheets CSV</text>
+    <text x="20" y="125" font-family="monospace" font-size="10" fill="#888">Parser</text>
+    <text x="100" y="125" font-family="monospace" font-size="10" fill="#888">PapaParse v5.4.1</text>
+    <text x="20" y="145" font-family="monospace" font-size="10" fill="#888">Fonts</text>
+    <text x="100" y="145" font-family="monospace" font-size="10" fill="#888">Orbitron + Roboto</text>
+    <text x="20" y="165" font-family="monospace" font-size="10" fill="#888">Theme</text>
+    <text x="100" y="165" font-family="monospace" font-size="10" fill="#888">Cyberpunk / Neon</text>
+  </g>
+</svg>
