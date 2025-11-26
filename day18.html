@@ -148,12 +148,75 @@
       border-color: var(--neon-color);
       font-weight: bold;
     }
+
+    /* Logo 區塊 */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container svg,
+    .logo-container img {
+      width: 150px;
+      height: 150px;
+      filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.3));
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .logo-container svg:hover,
+    .logo-container img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.5));
+    }
+
+    /* 架構圖區塊 */
+    .architecture-section {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid #333;
+    }
+
+    .architecture-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-color);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .architecture-container {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .architecture-container img {
+      width: 100%;
+      min-width: 800px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .architecture-container:hover {
+      border-color: var(--neon-color);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    }
   </style>
 </head>
 
 <body>
 
   <div class="container">
+    <!-- Logo 區塊 -->
+    <div class="logo-container">
+      <img src="assets/day20-logo.svg" alt="Pokemon Store Logo">
+    </div>
+
     <header>
       <h1>小杰 🩷 寶可夢</h1>
     </header>
@@ -172,6 +235,14 @@
         <p>如果很久沒反應，請檢查你的 CSV 網址是否正確</p>
       </div>
     </div>
+
+    <!-- 系統架構圖區塊 -->
+    <section class="architecture-section">
+      <h2 class="architecture-title">🏗️ System Architecture</h2>
+      <div class="architecture-container">
+        <img src="assets/day20-sa.svg" alt="System Architecture Diagram">
+      </div>
+    </section>
   </div>
 
   <script>
